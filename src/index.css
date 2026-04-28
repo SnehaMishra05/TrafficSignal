@@ -1,0 +1,9 @@
+* {
+  margin: 3px;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
