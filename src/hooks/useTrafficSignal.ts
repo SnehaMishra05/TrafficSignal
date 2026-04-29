@@ -10,6 +10,12 @@ const initialState: State = {
         RIGHT: 4,
         BOTTOM: 6,
         LEFT: 3,
+    },
+    signals: {
+        TOP: { vehicleCount: 5 },
+        RIGHT: { vehicleCount: 3 },
+        BOTTOM: { vehicleCount: 7 },
+        LEFT: { vehicleCount: 2 },
     }
 };
 

@@ -2,27 +2,32 @@ import { useTrafficSignal } from "../hooks/useTrafficSignal";
 import styles from "./TrafficSignal.module.css";
 
 const TrafficSignal = () => {
-    const { currentGreen, timer } = useTrafficSignal();
-    
-    const renderLight = (direction: string, positionClass: string) => {
-        const isActive = currentGreen === direction;
+  const { currentGreen, timer, signals } = useTrafficSignal();
 
-        return (
-            <div
-                className={`${styles.light} ${styles[positionClass]} ${isActive ? styles.active : ""}`}>
-                {isActive ? timer : ""}
-            </div>
-        );
-    };
+  const renderLight = (direction: string, positionClass: string) => {
+    const isActive = currentGreen === direction;
+    const vehicles = signals[direction].vehicleCount;
 
     return (
-        <div className={styles.container}>
-            {renderLight("TOP", "top")}
-            {renderLight("RIGHT", "right")}
-            {renderLight("BOTTOM", "bottom")}
-            {renderLight("LEFT", "left")}
-        </div>
+      <div
+        className={`${styles.light} ${styles[positionClass]} ${
+          isActive ? styles.active : ""
+        }`}
+      >
+        <div>{vehicles}</div>
+        {isActive && <div>({timer})</div>}
+      </div>
     );
+  };
+
+  return (
+    <div className={styles.container}>
+      {renderLight("TOP", "top")}
+      {renderLight("RIGHT", "right")}
+      {renderLight("BOTTOM", "bottom")}
+      {renderLight("LEFT", "left")}
+    </div>
+  );
 };
 
 export default TrafficSignal;
