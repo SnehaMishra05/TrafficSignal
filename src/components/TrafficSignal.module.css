@@ -1,29 +1,46 @@
 .container {
-    width: 100px;
-    padding: 10px;
-    background: black;
-    border-radius: 10px;
+    position: relative;
+    width: 200px;
+    height: 200px;
 }
 
 .light {
-    width: 60px;
-    height: 60px;
-    margin: 10px auto;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
 }
 
-.red.active {
-    background: red;
-    box-shadow: 0 0 20px red, 0 0 40px red;
-}
-
-.yellow.active {
-    background: yellow;
-    box-shadow: 0 0 20px yellow, 0 0 40px yellow;
-}
-
-.green.active {
+.active {
     background: green;
-    box-shadow: 0 0 20px green, 0 0 40px green;
+}
+
+/* positions */
+.top {
+    position: absolute;
+    top: 0;
+    left: 75px;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+    top: 75px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 75px;
+}
+
+.left {
+    position: absolute;
+    left: 0;
+    top: 75px;
 }
