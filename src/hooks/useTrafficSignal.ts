@@ -1,20 +1,23 @@
-import { useEffect, useReducer } from "react";
-import { initialState, reducer } from "../store/trafficReducer";
+import React from 'react';
+import type { Light } from '../types/traffic.types';
 
-export const useTrafficSignal = () => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+export const useTrafficSignal = (): Light => {
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            if (state.count === 0) {
-                dispatch({ type: 'NEXT_LIGHT' });
-            } else {
-                dispatch({ type: 'TICK' });
-            }
-        }, 1000);
+    const [light, setLight] = React.useState<Light>('RED');
+    
+    React.useEffect(() => {
+        let timer: number;
+
+        if (light === 'RED') {
+            timer = setTimeout(() => setLight('GREEN'), 5000);
+        } else if (light === 'GREEN') {
+            timer = setTimeout(() => setLight('YELLOW'), 3000);
+        } else {
+            timer = setTimeout(() => setLight('RED'), 1000);
+        }
 
         return () => clearTimeout(timer);
-    }, [state]);
+    }, [light]);
 
-    return { state, dispatch };
-};
+    return light;
+}

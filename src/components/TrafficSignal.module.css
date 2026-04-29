@@ -1,138 +1,29 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.box {
-    background-color: #111;
-    padding: 20px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    align-items: flex-start;
-}
-
-.signalColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+    width: 100px;
+    padding: 10px;
+    background: black;
+    border-radius: 10px;
 }
 
 .light {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
     border-radius: 50%;
-    background-color: #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
+    background: grey;
 }
 
-.active-red {
-    background-color: red;
-    box-shadow: 0 0 25px red;
+.red.active {
+    background: red;
+    box-shadow: 0 0 20px red, 0 0 40px red;
 }
 
-.active-yellow {
-    background-color: yellow;
-    box-shadow: 0 0 25px yellow;
+.yellow.active {
+    background: yellow;
+    box-shadow: 0 0 20px yellow, 0 0 40px yellow;
 }
 
-.active-green {
-    background-color: green;
-    box-shadow: 0 0 25px green;
-}
-
-.pedestrianButton {
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border: 2px solid #fff;
-    background-color: #333;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-bottom: 20px;
-}
-
-.pedestrianButton:hover {
-    background-color: #555;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    transform: scale(1.05);
-}
-
-.controlPanel {
-    background-color: #222;
-    padding: 14px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    min-width: 200px;
-}
-
-.controlPanel h3 {
-    margin: 0 0 12px 0;
-    color: #fff;
-    font-size: 16px;
-}
-
-.timingControl {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    color: #fff;
-    font-size: 14px;
-}
-
-.timingControl label {
-    flex: 1;
-    text-transform: capitalize;
-}
-
-.timingControl input {
-    width: 50px;
-    padding: 4px 6px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
-    font-size: 13px;
-}
-
-.timingControl input:focus {
-    outline: none;
-    border-color: #888;
-    background-color: #3a3a3a;
-}
-
-.controlButtons {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.controlButtons button {
-    flex: 1;
-    padding: 8px 12px;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid #555;
-    background-color: #333;
-    color: #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.controlButtons button:hover {
-    background-color: #444;
-    border-color: #888;
+.green.active {
+    background: green;
+    box-shadow: 0 0 20px green, 0 0 40px green;
 }
