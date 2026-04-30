@@ -1,46 +1,139 @@
 .container {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
 }
 
+/* SIGNAL BODY */
+.signalBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80px;
+    height: 200px;
+    background: #1c1c1c;
+    border-radius: 20px;
+    padding: 10px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* LIGHT */
 .light {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: grey;
+    background: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     font-weight: bold;
-}
-
-.active {
-    background: green;
-}
-
-/* positions */
-.top {
     position: absolute;
+    transition: all 0.3s ease;
+}
+
+/* COLORS */
+.activeGreen {
+    background: #00ff66;
+    box-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66;
+}
+
+.activeRed {
+    background: #ff3b3b;
+    box-shadow: 0 0 15px #ff3b3b;
+}
+
+.inactive {
+    background: #2a2a2a;
+}
+
+/* POSITIONS */
+.top {
     top: 0;
-    left: 75px;
+    left: 105px;
 }
 
 .right {
-    position: absolute;
     right: 0;
-    top: 75px;
+    top: 105px;
 }
 
 .bottom {
-    position: absolute;
     bottom: 0;
-    left: 75px;
+    left: 105px;
 }
 
 .left {
-    position: absolute;
     left: 0;
-    top: 75px;
+    top: 105px;
+}
+
+/* VEHICLE BADGE */
+.vehicleCount {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #ddd;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* badge positions */
+.vehicletop {
+    top: 60px;
+    left: 110px;
+}
+
+.vehicleright {
+    right: -60px;
+    top: 110px;
+}
+
+.vehiclebottom {
+    bottom: 60px;
+    left: 110px;
+}
+
+.vehicleleft {
+    left: -60px;
+    top: 110px;
+}
+
+/* BUTTONS */
+.controls {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: #222;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #444;
 }

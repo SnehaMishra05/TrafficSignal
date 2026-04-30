@@ -1,3 +1,5 @@
+//types -> initial state -> reducer logic -> component/UI
+
 export type Direction = "TOP" | "BOTTOM" | "LEFT" | "RIGHT";
 
 export type State = {
@@ -9,6 +11,7 @@ export type State = {
             vehicleCount: number;
         }
     }
+    emergency: Direction | null;
 }
 
-export type Action = { type: "TICK" };
+export type Action = | { type: "TICK" } | { type: "SET_EMERGENCY", payload: Direction | null };
