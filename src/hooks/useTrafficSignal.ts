@@ -4,18 +4,13 @@ import type { State } from "../types/traffic.types";
 
 const initialState: State = {
   currentGreen: "TOP",
+  phase: "GREEN",
   timer: 5,
-  duration: {
-    TOP: 5,
-    RIGHT: 4,
-    BOTTOM: 6,
-    LEFT: 3,
-  },
   signals: {
-    TOP: { vehicleCount: 5 },
-    RIGHT: { vehicleCount: 3 },
-    BOTTOM: { vehicleCount: 7 },
-    LEFT: { vehicleCount: 2 },
+    TOP: { vehicleCount: 4 },
+    RIGHT: { vehicleCount: 7 },
+    BOTTOM: { vehicleCount: 3 },
+    LEFT: { vehicleCount: 6 },
   },
   emergency: null,
 };

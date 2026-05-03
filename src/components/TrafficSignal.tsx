@@ -1,71 +1,67 @@
 import { useTrafficSignal } from "../hooks/useTrafficSignal";
+import type { Direction } from "../types/traffic.types";
 import styles from "./TrafficSignal.module.css";
 
-const TrafficSignal = () => {
-  const { currentGreen, timer, signals, dispatch } = useTrafficSignal();
+const directions: Direction[] = ["TOP", "RIGHT", "BOTTOM", "LEFT"];
 
-  const renderLight = (direction: string, positionClass: string) => {
+const TrafficSignal = () => {
+  const { currentGreen, timer, phase, signals, dispatch } = useTrafficSignal();
+
+  const renderLight = (direction: Direction, positionClass: string) => {
     const isActive = currentGreen === direction;
     const vehicles = signals[direction].vehicleCount;
 
     return (
-      <>
+      <div key={direction}>
+        {/* 🚦 Light */}
         <div
           className={`${styles.light} ${styles[positionClass]} ${
-            isActive ? styles.activeGreen : styles.inactive
+            isActive
+              ? phase === "GREEN"
+                ? styles.activeGreen
+                : styles.activeYellow
+              : styles.activeRed
           }`}
         >
           {isActive && <span>{timer}</span>}
         </div>
 
+        {/* Vehicle Count */}
         <div
-          className={`${styles.vehicleCount} ${styles[`vehicle${positionClass}`]}`}
+          className={`${styles.vehicleCount} ${
+            styles[`vehicle${positionClass}`]
+          }`}
         >
-          {vehicles}
+          <div>🚗 {vehicles}</div>
         </div>
-      </>
+      </div>
     );
   };
 
   return (
-    <div>
-      <h2 className={styles.title}>Smart Traffic System</h2>
-      <div className={styles.container}>
-        {renderLight("TOP", "top")}
-        {renderLight("RIGHT", "right")}
-        {renderLight("BOTTOM", "bottom")}
-        {renderLight("LEFT", "left")}
+    <div className={styles.container}>
+      <h2 className={styles.title}>Traffic Signal</h2>
+
+      <div className={styles.signalContainer}>
+        <div className={styles.signalBox}></div>
+        {directions.map((dir) => renderLight(dir, dir.toLowerCase()))}
       </div>
 
-      <div className={styles.controls}>
-        <button
-          onClick={() => dispatch({ type: "SET_EMERGENCY", payload: "TOP" })}
-        >
-          🚑 TOP
-        </button>
-
-        <button
-          onClick={() => dispatch({ type: "SET_EMERGENCY", payload: "RIGHT" })}
-        >
-          🚑 RIGHT
-        </button>
-
-        <button
-          onClick={() => dispatch({ type: "SET_EMERGENCY", payload: "BOTTOM" })}
-        >
-          🚑 BOTTOM
-        </button>
-
-        <button
-          onClick={() => dispatch({ type: "SET_EMERGENCY", payload: "LEFT" })}
-        >
-          🚑 LEFT
-        </button>
+      {/* Emergency Buttons */}
+      <div className={styles.emergencyPanel}>
+        {directions.map((dir) => (
+          <button
+            key={dir}
+            onClick={() => dispatch({ type: "SET_EMERGENCY", payload: dir })}
+          >
+            🚑 {dir}
+          </button>
+        ))}
 
         <button
           onClick={() => dispatch({ type: "SET_EMERGENCY", payload: null })}
         >
-          ❌ Clear
+          ❌ Stop Emergency
         </button>
       </div>
     </div>

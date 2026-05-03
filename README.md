@@ -1,75 +1,86 @@
-# React + TypeScript + Vite
+# 🚦 Traffic Signal Simulator (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple yet interactive traffic signal simulation built using React, demonstrating real-time state management, timed transitions, and basic real-world traffic behavior.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🔥 Features
 
-## React Compiler
+* ⏱ **Timer-based Signal Switching**
+  Automatic transition between signals using a fixed time interval.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* 🔁 **State Machine Logic**
+  Implements `GREEN → YELLOW → NEXT` signal flow using `useReducer`.
 
-Note: This will impact Vite dev & build performances.
+* 🚗 **Dynamic Vehicle Simulation**
 
-## Expanding the ESLint configuration
+  * Vehicles accumulate on red signals
+  * Vehicles clear on green signals
+  * Signal timing adapts slightly based on traffic load
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* 🚑 **Emergency Override System**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+  * Instantly prioritizes a selected direction
+  * Maintains green signal for emergency duration
+  * Resumes normal flow after clearing
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 Tech Stack
+
+* **React**
+* **TypeScript**
+* **CSS Modules**
+* React Hooks:
+
+  * `useReducer`
+  * `useEffect`
+
+---
+
+## ⚙️ How It Works
+
+* A timer (`setInterval`) triggers state updates every second
+* The reducer manages signal transitions as a **state machine**
+* Vehicle counts are updated dynamically:
+
+  * Increase on red signals
+  * Decrease on green signals
+* Emergency mode overrides normal behavior temporarily
+
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository
+
+```
+git clone https://github.com/SnehaMishra05/TrafficSignal.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+npm install
+```
+
+3. Run the app
+
+```
+npm run dev
+```
+
+---
+
+## 🎯 Key Learnings
+
+* Managing complex state using `useReducer`
+* Implementing time-based updates with `useEffect`
+* Designing a simple state machine in React
+* Balancing real-world modeling with code simplicity
+
+---
+
+## 👩‍💻 Author
+
+Sneha Mishra

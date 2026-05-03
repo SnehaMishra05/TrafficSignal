@@ -1,17 +1,15 @@
-//types -> initial state -> reducer logic -> component/UI
+export type Direction = "TOP" | "RIGHT" | "BOTTOM" | "LEFT";
 
-export type Direction = "TOP" | "BOTTOM" | "LEFT" | "RIGHT";
+export type SignalPhase = "GREEN" | "YELLOW";
 
 export type State = {
-    currentGreen: Direction;
-    timer: number;
-    duration: Record<Direction, number>;
-    signals: {
-        [key in Direction]: {
-            vehicleCount: number;
-        }
-    }
-    emergency: Direction | null;
-}
+  currentGreen: Direction;
+  phase: SignalPhase;
+  timer: number;
+  signals: Record<Direction, { vehicleCount: number }>;
+  emergency: Direction | null;
+};
 
-export type Action = | { type: "TICK" } | { type: "SET_EMERGENCY", payload: Direction | null };
+export type Action =
+  | { type: "TICK" }
+  | { type: "SET_EMERGENCY"; payload: Direction | null };
